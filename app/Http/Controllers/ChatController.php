@@ -8,12 +8,13 @@ use Illuminate\Support\Facades\Http;
 
 class ChatController extends Controller
 {
-    public function conversations()
-    {
-        $conversations = Conversation::query()
-            ->with('messages')
-            ->latest('updated_at')
-            ->get()
+    public function conversations(Request $request)
+        {
+            $conversations = $request->user()
+                ->conversations()
+                ->with('messages')
+                ->latest('updated_at')
+                ->get()
             ->map(function ($conversation) {
 
                 $firstUserMessage = $conversation->messages
@@ -70,12 +71,14 @@ class ChatController extends Controller
         try {
 
             $conversation = $request->conversation_id
-                ? Conversation::findOrFail(
-                    $request->conversation_id
-                )
-                : Conversation::create([
-                    'title' => 'New Conversation',
-                ]);
+                ? $request->user()
+                    ->conversations()
+                    ->findOrFail($request->conversation_id)
+                : $request->user()
+                    ->conversations()
+                    ->create([
+                        'title' => 'New Conversation',
+                    ]);
 
 
             $latestMessage = collect(
@@ -198,42 +201,35 @@ class ChatController extends Controller
     }
 
 
-    public function show(
-        Conversation $conversation
-    ) {
+public function show(Request $request, Conversation $conversation)
+{
+    $conversation = $request->user()
+        ->conversations()
+        ->with('messages')
+        ->findOrFail($conversation->id);
 
-        $conversation->load('messages');
+    return response()->json([
+        'conversation_id' => $conversation->id,
+        'title' => $conversation->title,
+        'messages' => $conversation->messages->map(function ($message) {
+            return [
+                'role' => $message->role,
+                'content' => $message->content,
+            ];
+        }),
+    ]);
+}
 
-        return response()->json([
-            'conversation_id' =>
-                $conversation->id,
+public function destroy(Request $request, Conversation $conversation)
+{
+    $conversation = $request->user()
+        ->conversations()
+        ->findOrFail($conversation->id);
 
-            'title' =>
-                $conversation->title,
+    $conversation->delete();
 
-            'messages' =>
-                $conversation->messages->map(
-                    function ($message) {
-
-                        return [
-                            'role' =>
-                                $message->role,
-
-                            'content' =>
-                                $message->content,
-                        ];
-
-                    }
-                ),
-        ]);
-    }
-
-    public function destroy(Conversation $conversation)
-    {
-        $conversation->delete();
-
-        return response()->json([
-            'success' => true,
-        ]);
-    }
+    return response()->json([
+        'success' => true,
+    ]);
+}
 }

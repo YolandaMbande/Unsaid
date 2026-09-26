@@ -48,41 +48,74 @@
     id="mobileSidebarOverlay"
 ></div>
     <!-- SIDEBAR -->
+<aside class="conversation-sidebar">
 
-    <aside class="conversation-sidebar">
+    <div class="sidebar-header">
 
-        <div class="sidebar-header">
+        <a
+            href="{{ url('/') }}"
+            class="sidebar-logo"
+        >
+            unsaid.
+        </a>
 
-            <a
-                href="{{ url('/') }}"
-                class="sidebar-logo"
-            >
-                unsaid.
-            </a>
+        <button
+            type="button"
+            id="newConversationButton"
+            class="new-conversation-button"
+        >
+            + New conversation
+        </button>
 
+    </div>
+
+
+    <div
+        class="conversation-list"
+        id="conversationList"
+    >
+
+        <!-- Conversations appear here -->
+
+    </div>
+
+
+    <!-- Account -->
+    <div class="sidebar-account">
+
+        <div class="account-details">
+            <div class="account-avatar">
+                {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+            </div>
+
+            <div class="account-info">
+                <span class="account-name">
+                    {{ auth()->user()->name }}
+                </span>
+
+                <span class="account-email">
+                    {{ auth()->user()->email }}
+                </span>
+            </div>
+        </div>
+
+        <form
+            method="POST"
+            action="{{ route('logout') }}"
+        >
+            @csrf
 
             <button
-                type="button"
-                id="newConversationButton"
-                class="new-conversation-button"
+                type="submit"
+                class="logout-button"
             >
-                + New conversation
+                Log out
             </button>
+        </form>
 
-        </div>
+    </div>
 
-
-        <div
-            class="conversation-list"
-            id="conversationList"
-        >
-
-            <!-- Conversations appear here -->
-
-        </div>
-
-    </aside>
-
+</aside>
 
     <!-- MAIN CHAT -->
 
