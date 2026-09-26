@@ -38,4 +38,6 @@ RUN mkdir -p \
     bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
-CMD ["sh", "-c", "php artisan migrate --force && frankenphp run --config /app/Caddyfile"]
+RUN setcap -r /usr/local/bin/frankenphp || true
+
+CMD ["sh", "-c", "php artisan migrate --force && /usr/local/bin/frankenphp run --config /app/Caddyfile"]
