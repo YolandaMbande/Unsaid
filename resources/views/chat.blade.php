@@ -150,21 +150,6 @@
         </header>
 
 
-        <section class="chat-intro">
-
-            <h1>
-                What's on your mind?
-            </h1>
-
-
-            <p>
-                You don't have to organise your thoughts first.
-                Just start wherever you are.
-            </p>
-
-        </section>
-
-
         <main
             class="chat-window"
             id="chatWindow"
