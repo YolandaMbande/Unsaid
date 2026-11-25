@@ -5,13 +5,17 @@
         }
 
         :root {
-            --background: #f7f3ed;
-            --surface: #fffdf9;
-            --text: #2d2722;
-            --muted: #756b61;
-            --accent: #b08a57;
-            --accent-dark: #8c6a3f;
-            --border: rgba(45, 39, 34, 0.09);
+            --background: #f3f1fa;
+            --surface: #fcfbff;
+            --sidebar: #eae6f6;
+            --soft: #eae6f6;
+            --ink: #2a2450;
+            --text: #231e3d;
+            --muted: #6c6887;
+            --accent: #8b7bd8;
+            --accent-dark: #6a58bf;
+            --border: rgba(35, 30, 61, 0.09);
+            --shadow: rgba(62, 46, 130, 0.08);
         }
 
         html,
@@ -57,7 +61,7 @@
 
             padding: 25px 18px;
 
-            background: #f0e9df;
+            background: var(--sidebar);
             border-right: 1px solid var(--border);
         }
 
@@ -86,7 +90,7 @@
 
             padding: 12px 15px;
 
-            border: 1px solid rgba(45, 39, 34, 0.12);
+            border: 1px solid rgba(35, 30, 61, 0.12);
             border-radius: 14px;
 
             background: var(--surface);
@@ -103,8 +107,8 @@
 
 
         .new-conversation-button:hover {
-            background: #fffaf3;
-            border-color: rgba(176, 138, 87, 0.35);
+            background: #f8f6ff;
+            border-color: rgba(139, 123, 216, 0.45);
         }
 
 
@@ -145,7 +149,7 @@
             background: var(--surface);
 
             box-shadow:
-                0 5px 18px rgba(58, 48, 40, 0.05);
+                0 5px 18px var(--shadow);
         }
 
 
@@ -171,7 +175,7 @@
 
 
         .conversation-content:hover {
-            background: rgba(255, 253, 249, 0.7);
+            background: rgba(252, 251, 255, 0.7);
         }
 
 
@@ -231,7 +235,7 @@
 
 
         .delete-conversation:hover {
-            background: #e8ddd1;
+            background: #ddd6f3;
             color: var(--accent-dark);
         }
 
@@ -355,13 +359,13 @@
             border-radius: 24px;
 
             box-shadow:
-                0 20px 50px rgba(58, 48, 40, 0.08);
+                0 20px 50px var(--shadow);
 
             overflow-y: auto;
             overflow-x: hidden;
 
             scrollbar-width: thin;
-            scrollbar-color: #cfc3b5 transparent;
+            scrollbar-color: #cdc6e6 transparent;
         }
 
 
@@ -376,14 +380,14 @@
 
 
         .chat-window::-webkit-scrollbar-thumb {
-            background: #cfc3b5;
+            background: #cdc6e6;
 
             border-radius: 20px;
         }
 
 
         .chat-window::-webkit-scrollbar-thumb:hover {
-            background: #b8aa9a;
+            background: #b3aad6;
         }
 
 
@@ -420,14 +424,14 @@
 
 
         .ai .bubble {
-            background: #f0e9df;
+            background: var(--soft);
 
             border-bottom-left-radius: 5px;
         }
 
 
         .user .bubble {
-            background: #3a3028;
+            background: var(--ink);
 
             color: white;
 
@@ -471,7 +475,7 @@
             border-radius: 50px;
 
             box-shadow:
-                0 10px 30px rgba(58, 48, 40, 0.07);
+                0 10px 30px var(--shadow);
         }
 
 
@@ -492,7 +496,7 @@
 
 
         .chat-form input::placeholder {
-            color: #aaa096;
+            color: #a9a5c0;
         }
 
 
@@ -521,7 +525,7 @@
 
 
         .icon-button:hover {
-            background: #f0e9df;
+            background: var(--soft);
 
             color: var(--text);
         }
@@ -533,7 +537,7 @@
 
 
         .send-button {
-            background: #3a3028;
+            background: var(--ink);
 
             color: white;
         }
@@ -634,9 +638,15 @@
 
             flex-direction: column;
 
-            background: #2d2722;
+            background:
+                radial-gradient(
+                    circle at 50% 38%,
+                    #3a3170 0%,
+                    #231e47 45%,
+                    #17132f 100%
+                );
 
-            color: #fffdf9;
+            color: #faf9ff;
         }
 
 
@@ -665,9 +675,9 @@
             border-radius: 50%;
 
             background:
-                rgba(255, 253, 249, 0.08);
+                rgba(250, 249, 255, 0.08);
 
-            color: #fffdf9;
+            color: #faf9ff;
 
             font-size: 20px;
 
@@ -679,7 +689,7 @@
 
         .call-back:hover {
             background:
-                rgba(255, 253, 249, 0.15);
+                rgba(250, 249, 255, 0.15);
         }
 
 
@@ -708,9 +718,14 @@
 
             border-radius: 50%;
 
-            background: #b08a57;
+            background:
+                linear-gradient(
+                    145deg,
+                    #a99af0,
+                    #7461d0
+                );
 
-            color: #fffdf9;
+            color: #faf9ff;
 
             font-family: "Playfair Display", serif;
 
@@ -718,10 +733,10 @@
 
             box-shadow:
                 0 0 0 12px
-                    rgba(176, 138, 87, 0.08),
+                    rgba(139, 123, 216, 0.12),
 
                 0 0 0 24px
-                    rgba(176, 138, 87, 0.04);
+                    rgba(139, 123, 216, 0.06);
         }
 
 
@@ -738,7 +753,7 @@
             margin-top: 8px;
 
             color:
-                rgba(255, 253, 249, 0.65);
+                rgba(250, 249, 255, 0.7);
 
             font-size: 14px;
         }
@@ -748,7 +763,7 @@
             margin-top: 12px;
 
             color:
-                rgba(255, 253, 249, 0.45);
+                rgba(250, 249, 255, 0.5);
 
             font-size: 12px;
 
@@ -793,21 +808,21 @@
 
         .call-control {
             background:
-                rgba(255, 253, 249, 0.1);
+                rgba(250, 249, 255, 0.1);
 
-            color: #fffdf9;
+            color: #faf9ff;
         }
 
 
         .call-control:hover {
             background:
-                rgba(255, 253, 249, 0.18);
+                rgba(250, 249, 255, 0.18);
         }
 
 
         .call-control.muted {
             background:
-                rgba(255, 253, 249, 0.2);
+                rgba(250, 249, 255, 0.2);
 
             opacity: 0.6;
         }
@@ -817,16 +832,16 @@
             width: 68px;
             height: 68px;
 
-            background: #8c6a3f;
+            background: #d6566f;
 
-            color: #fffdf9;
+            color: #faf9ff;
 
             font-size: 24px;
         }
 
 
         .call-end:hover {
-            background: #b08a57;
+            background: #e8718a;
         }
 
 
@@ -846,28 +861,28 @@
             0% {
                 box-shadow:
                     0 0 0 12px
-                        rgba(176, 138, 87, 0.08),
+                        rgba(139, 123, 216, 0.12),
 
                     0 0 0 24px
-                        rgba(176, 138, 87, 0.04);
+                        rgba(139, 123, 216, 0.06);
             }
 
             50% {
                 box-shadow:
                     0 0 0 22px
-                        rgba(176, 138, 87, 0.12),
+                        rgba(139, 123, 216, 0.18),
 
                     0 0 0 42px
-                        rgba(176, 138, 87, 0.05);
+                        rgba(139, 123, 216, 0.07);
             }
 
             100% {
                 box-shadow:
                     0 0 0 12px
-                        rgba(176, 138, 87, 0.08),
+                        rgba(139, 123, 216, 0.12),
 
                     0 0 0 24px
-                        rgba(176, 138, 87, 0.04);
+                        rgba(139, 123, 216, 0.06);
             }
 
         }
@@ -927,8 +942,8 @@
 
 .call-message.ai {
     align-self: flex-start;
-    background: rgba(211, 173, 91, 0.18);
-    color: #f5ead8;
+    background: rgba(169, 154, 240, 0.22);
+    color: #ece8ff;
     border-bottom-left-radius: 5px;
 }
 /* -----------------------------------------
@@ -938,7 +953,7 @@
 .sidebar-account {
     margin-top: auto;
     padding: 18px;
-    border-top: 1px solid rgba(45, 39, 34, 0.1);
+    border-top: 1px solid rgba(35, 30, 61, 0.1);
 }
 
 .account-details {
@@ -960,8 +975,8 @@
 
     border-radius: 50%;
 
-    background: #2d2722;
-    color: #f8f3eb;
+    background: var(--ink);
+    color: #f6f4ff;
 
     font-size: 14px;
     font-weight: 600;
@@ -1002,7 +1017,7 @@
 
     padding: 9px 12px;
 
-    border: 1px solid rgba(45, 39, 34, 0.12);
+    border: 1px solid rgba(35, 30, 61, 0.12);
     border-radius: 10px;
 
     background: transparent;
@@ -1019,8 +1034,8 @@
 }
 
 .logout-button:hover {
-    background: rgba(45, 39, 34, 0.06);
-    border-color: rgba(45, 39, 34, 0.2);
+    background: rgba(35, 30, 61, 0.06);
+    border-color: rgba(35, 30, 61, 0.2);
 }
 @media (max-width: 600px) {
     .call-transcript {
@@ -1074,7 +1089,7 @@
 
                 box-shadow:
                     10px 0 30px
-                    rgba(45, 39, 34, 0.15);
+                    rgba(35, 30, 61, 0.15);
             }
 
 
@@ -1097,7 +1112,7 @@
                 display: block;
 
                 background:
-                    rgba(45, 39, 34, 0.35);
+                    rgba(35, 30, 61, 0.35);
 
                 opacity: 0;
 
@@ -1154,13 +1169,13 @@
 
                 box-shadow:
                     0 5px 18px
-                    rgba(58, 48, 40, 0.08);
+                    var(--shadow);
             }
 
 
             .mobile-menu-button:hover {
                 background:
-                    #f0e9df;
+                    var(--soft);
             }
 
 
